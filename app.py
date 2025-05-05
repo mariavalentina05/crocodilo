@@ -6,7 +6,6 @@ import json
 app = Flask(__name__)
 
 chaveApi = ""
-connection_db = psycopg.connect("")
 
 @app.route("/consultaid/<id>", methods=['GET'])
 def consultar_id(id):
@@ -17,9 +16,8 @@ def consultar_nome(nome):
     nomeBusca = nome.replace("%20", " ")
     nomeFormatado = nomeBusca.strip()
     
-    conn = connection_db
-    if conn:
-        try:
+    try:
+        with psycopg.connect("") as conn:
             with conn.cursor() as cursor:
                 cursor.execute("SELECT * FROM filmes WHERE LOWER(title) = LOWER(%s)", (nomeFormatado,))
                 filme = cursor.fetchone()
@@ -139,9 +137,5 @@ def consultar_nome(nome):
                 else:
                     return {"error": "Erro ao acessar a API OMDB"}, response.status_code
                     
-        except Exception as e:
-            return {"error": f"Erro ao processar a requisição: {str(e)}"}, 500
-        finally:
-            conn.close()
-    else:
-        return {"error": "Erro ao conectar com o banco de dados"}, 500
+    except Exception as e:
+        return {"error": f"Erro ao processar a requisição: {str(e)}"}, 500
