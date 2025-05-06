@@ -23,30 +23,24 @@ Nesse projeto, fizemso uma API que fornece informações sobre filmes, onde é p
 
 3. Ative o ambiente virtual:
 ```bash
-venv\Scripts\activate
+.venv\Scripts\activate
 ```
 
-4. Instale o flask:
+4. Instale as bibliotecas necessárias:
 ```bash
-pip install flask
+pip install flask psycopg[binary] requests
 ```
 
 5.Teste as requisiçõoes 
-Utilize ferramenta como o Insomnia para enviar as requisições 
+Utilize uma ferramenta como o Insomnia para enviar as requisições 
 
 ## Como usar 
 1. Inicie a API:
 ```bash
 flask --app app.py run
 ```
-A API está disponível em:http://localhost:5000 
+A API está disponível em: http://localhost:5000 
 
-2.
- 
+2. Envie suas requisições para a rota http://localhost:5000/consultaid/<id> ou /consultanome/<nomedofilme>
 
-
-
-
-
-
-
+3. Nessa etapa a sua requisição retornará os dados do filme.
