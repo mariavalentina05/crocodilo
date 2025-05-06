@@ -5,13 +5,13 @@ import json
 
 app = Flask(__name__)
 
-chaveApi = ""
+chaveApi = "b0aa237e"
 
 @app.route("/consultaid/<id>", methods=['GET'])
 def consultar_id(id):
     
     try:
-        with psycopg.connect("") as conn:
+        with psycopg.connect("host=164.90.152.205 dbname=crocodilo user=postgres port=80 password=3f@db") as conn:
             with conn.cursor() as cursor:
                 cursor.execute("SELECT * FROM filmes WHERE imdb_id = %s", (id,))
                 filme = cursor.fetchone()
@@ -107,7 +107,7 @@ def consultar_nome(nome):
     nomeFormatado = nomeBusca.strip()
 
     try:
-        with psycopg.connect("") as conn:
+        with psycopg.connect("host=164.90.152.205 dbname=crocodilo user=postgres port=80 password=3f@db") as conn:
             with conn.cursor() as cursor:
                 cursor.execute("SELECT * FROM filmes WHERE LOWER(title) = LOWER(%s)", (nomeFormatado,))
                 filme = cursor.fetchone()
