@@ -9,7 +9,11 @@
 
 ##  Como usar 
 
-1.
+1. Clone o repositório:
+```bash
+   git clone https://github.com/mariavalentina05/crocodilo.git
+   cd crocodilo
+```
 
 
 
