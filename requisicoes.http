@@ -1,2 +1,7 @@
 GET http://localhost:5000/consultanome/
 Content-Type: application/json
+
+###
+
+GET http://localhost:5000/consultaid/
+Content-Type: application/json
